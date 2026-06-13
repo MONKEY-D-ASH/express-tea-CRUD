@@ -1,8 +1,10 @@
+import 'dotenv/config' // this is the fixed way of how you import the dotenv in your server 
 import express from 'express'
+
 
 // this app is a powerful "object" which will provide us with many features of the express library
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 app.use(express.json()) // here we are telling the server that any data that comes up in the json format, we will accept that
 
 let teaData = []
@@ -51,7 +53,7 @@ app.delete('/teas/:id', (req, res) => {
         return res.status(404).send("tea not found")
     }
     teaData.splice(index, 1)
-    res.status(200).send("tea deleted successfully")
+    res.status(20).send("tea deleted successfully")
 })
 
 app.listen(port, () => {
